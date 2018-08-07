@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_purchase_order_merge" model="ir.actions.act_window">
+        <field name="name">Merge RFQs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.order.merge</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <record id="ir_values_purchase_order_merge" model="ir.values">
+        <field name="key2">client_action_multi</field>
+        <field name="model">purchase.order</field>
+        <field name="name">Merge RFQs</field>
+        <field name="value" eval="'ir.actions.act_window,'+str(action_purchase_order_merge)"/>
+    </record>
+
+    <record id="purchase_order_merge_form_view" model="ir.ui.view">
+        <field name="model">purchase.order.merge</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="purchase_ids"/>
+                </group>
+                <footer>
+                    <button name="do_merge" string="Merge RFQs" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
